@@ -17,6 +17,19 @@ python score.py --predictions validation_predictions.csv --december-predictions 
 
 The scorer validates both files and creates `scorer_results/candidate_december.png`.
 
+## How to run the pipeline
+
+```bash
+python -m pip install -r requirements.txt
+python train.py          # cleans, validates, fits, writes validation_predictions.csv
+                         # and fills data/december_chart_inputs.csv
+python test_pipeline.py  # 5 assert-based checks on cleaning/features/prediction
+python score.py --predictions validation_predictions.csv --december-predictions data/december_chart_inputs.csv
+```
+
+`train.py` prints the hyperparameter sweep and the full validation metrics table
+(also in `report.md`). Everything is deterministic (fixed random seed).
+
 ## Submit
 
 - GitHub repository containing your code, dependencies, and run instructions
